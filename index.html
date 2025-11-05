@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swipe Example</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #222;
+      color: white;
+      font-size: 2rem;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="swipeBox">Swipe Here 👆</div>
+
+  <script>
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const swipeBox = document.getElementById("swipeBox");
+
+    swipeBox.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    swipeBox.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleGesture();
+    });
+
+    function handleGesture() {
+      if (touchEndX < touchStartX - 50) {
+        swipeBox.textContent = "Swiped Left 👈";
+      }
+      if (touchEndX > touchStartX + 50) {
+        swipeBox.textContent = "Swiped Right 👉";
+      }
+    }
+  </script>
+</body>
+</html>
+
+
