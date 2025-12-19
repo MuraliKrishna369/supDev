@@ -1,50 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Swipe Example</title>
-  <style>
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #222;
-      color: white;
-      font-size: 2rem;
-      user-select: none;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div id="swipeBox">Swipe Here 👆</div>
-
-  <script>
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    const swipeBox = document.getElementById("swipeBox");
-
-    swipeBox.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-
-    swipeBox.addEventListener("touchend", (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleGesture();
-    });
-
-    function handleGesture() {
-      if (touchEndX < touchStartX - 50) {
-        swipeBox.textContent = "Swiped Left 👈";
-      }
-      if (touchEndX > touchStartX + 50) {
-        swipeBox.textContent = "Swiped Right 👉";
-      }
-    }
-  </script>
+  <div id="root">
+    <div class="box" draggable="true" id="item">
+      Drag Item
+    </div>
+    <div class="drop" id="dropzone">
+      Drop Here
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
-
-
